@@ -63,8 +63,8 @@ class App extends React.Component {
 }
 const mapStateToProps = (state) => {
   return {
-    errorMessage: state.errors.getAccounts
+    errorMessage: state.errors
   };
 };
 
-export default connect(mapStateToProps, { setAccounts, transError })(App);
+export default connect(mapStateToProps, { transError })(App);
