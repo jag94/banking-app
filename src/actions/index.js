@@ -13,6 +13,15 @@ export const setAccounts = accounts => {
     }
 };
 
+export const setTransactions = transactions => {
+    return {
+        type: 'SET_TRANSACTIONS',
+        payload: {
+            transactions
+        }
+    }
+}
+
 export const deleteAcct = (acctID) => {
     return {
         type: 'DELETE_ACCOUNT',

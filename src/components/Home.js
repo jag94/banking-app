@@ -52,8 +52,7 @@ class Home extends React.Component {
 
 const mapStateToProps = state => {
     return {
-        accounts: state.accounts.accounts,
-
+        accounts: state.accounts.accounts
     };
 };
 

@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 
 
 import Pages from './Pages';
-import { setAccounts, transError } from "../actions";
+import { setAccounts, setTransactions, transError } from "../actions";
 import Home from './Home';
 import Transactions from './Transactions';
 import Account from "./Account";
@@ -34,6 +34,7 @@ class App extends React.Component {
         .then(response => {
           this.props.setTransactions(response.data);
         }).catch(error => {
+        this.props.transError();
     });
 
   }
@@ -75,4 +76,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { setAccounts, transError })(App);
+export default connect(mapStateToProps, { setAccounts, setTransactions, transError })(App);
