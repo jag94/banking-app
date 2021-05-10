@@ -1,10 +1,16 @@
+// imports
+
+import '../App.css';
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 
 
 import Pages from './Pages';
-import { transError } from "../actions/actions";
+import { setAccounts, transError } from "../actions";
+import Home from './Home';
+import Transactions from './Transactions';
+import Account from "./Account";
 
 
 class App extends React.Component {
@@ -16,6 +22,7 @@ class App extends React.Component {
   componentDidMount() {
     this.getData();
   }
+
   getData() {
     axios.get('https://my-json-server.typicode.com/bnissen24/project2DB/accounts')
         .then(response => {
@@ -23,11 +30,11 @@ class App extends React.Component {
         }).catch(error => {
             this.props.transError();
     });
-    /*axios.get('https://my-json-server.typicode.com/bnissen24/project2DB/transactions')
+    axios.get('https://my-json-server.typicode.com/bnissen24/project2DB/transactions')
         .then(response => {
           this.props.setTransactions(response.data);
         }).catch(error => {
-    }); */
+    });
 
   }
 
@@ -51,12 +58,13 @@ class App extends React.Component {
     switch (view) {
 
         case 'Home':
-            return (this.wrapPage());
-
+            return (this.wrapPage(<Home currentView={view} onViewChange={this.onViewChange.bind(this)} />));
         case 'Transactions':
-            return (this.wrapPage());
+            return (this.wrapPage(<Transactions />));
+        case 'Account':
+            return (this.wrapPage(<Account />));
         default:
-            return (this.wrapPage());
+            return (this.wrapPage(<Home />));
     }
   }
 
@@ -67,4 +75,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { transError })(App);
+export default connect(mapStateToProps, { setAccounts, transError })(App);
