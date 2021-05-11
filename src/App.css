@@ -39,8 +39,7 @@ a:link, a:visited {
 }
 
 button {
-  margin-bottom: 2%;
-  margin-top: 2%;
+
   background-color: #445a86;
   width: 30%;
   color: white;
@@ -48,7 +47,6 @@ button {
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: medium;
 }
 
 button:hover, button:focus, button:active, .btnHolster button:hover, .btnHolster button:focus, .btnHolster button:active {
