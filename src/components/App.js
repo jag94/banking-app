@@ -15,7 +15,7 @@ import Account from "./Account";
 
 class App extends React.Component {
   state = {
-      view: 'Home',
+      view: 'Account',
       errorText: ''
   };
 

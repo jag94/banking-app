@@ -68,7 +68,7 @@ h1, h2 {
   margin: auto;
 }
 
-.card {
+.card, .form, .transTble, .new-trans {
   background-color: aliceblue;
   padding: 1%;
   margin: 2%;
@@ -93,7 +93,7 @@ h1, h2 {
 /* Transactions styling */
 
 .transList {
-  background: aliceblue;
+  background: ghostwhite;
   margin: auto;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   width: 90%;
@@ -101,8 +101,46 @@ h1, h2 {
 }
 
 th, td {
-  border: 1px solid darkkhaki;
+  border: 1px solid #445a86;
   padding: 1% 0;
+}
+
+/* Account Page styling */
+
+.form, .form div, .Form-edit form {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.Form-edit form input, .Form-edit form button {
+  margin: 1% auto;
+}
+
+.form div {
+  margin-bottom: 0.5%;
+}
+
+.form h3, .form p, .form button {
+  margin: 1% auto;
+}
+
+.transTble {
+  margin-top: 2em;
+  background-color: #445a86;
+}
+
+.transTble h3 {
+  color: ghostwhite;
+}
+
+.new-trans, .form {
+  background-color: #445a86;
+  color: ghostwhite;
+}
+
+.Form-edit form button, .form button {
+  background-color: cadetblue;
 }
 
 /* Media queries for mobile view */
