@@ -1,25 +1,34 @@
 import React from "react";
 import { connect } from "react-redux";
 import { deleteAcct, newTrans, depositAcct, withdrawAcct } from "../actions";
+import { useParams, Link } from "react-router-dom";
 
 class Account extends React.Component {
-    state = {
-        currentPage: '/'
-    } //might not deal with this
+
+    thisAcct = parseInt(this.props.match.params.id);
+
+    isActivePage(pageName) {
+        return (pageName === this.props.currentView ? 'nav-link active' : 'nav-link')
+    }
+
+    onNavClick(event, pageName) {
+        this.setState({ currentView: pageName})
+        this.props.deleteAcct(this.thisAcct);
+    }
 
     onAddDeposit = (event) => {
         let type = 'deposit';
         event.preventDefault();
-        this.props.depositAcct(1, this.state.amount);
-        this.props.newTrans(type, 1, this.state.amount, this.state.name);
+        this.props.depositAcct(this.thisAcct, this.state.amount);
+        this.props.newTrans(type, this.thisAcct, this.state.amount, this.state.name);
         this.setState({amount: '', name: ''});
     }
 
     onWithdraw = (event) => {
         let type = 'withdraw';
         event.preventDefault();
-        this.props.withdrawAcct(1, this.state.amount);
-        this.props.newTrans(type, 1, this.state.amount, this.state.name);
+        this.props.withdrawAcct(this.thisAcct, this.state.amount);
+        this.props.newTrans(type, this.thisAcct, this.state.amount, this.state.name);
         this.setState({amount: '', name: ''});
     }
 
@@ -27,7 +36,7 @@ class Account extends React.Component {
         let transList = this.props.transactions;
         let tActions = [];
         transList.forEach(transaction => {
-            if (transaction.accountId == 2) /*this.props.match.params.id*/{
+            if (transaction.accountId === this.thisAcct) {
                 tActions.push(transaction)
             }
         });
@@ -48,35 +57,39 @@ class Account extends React.Component {
 
     render() {
         const transList = this.transSeg();
-        let hold = [];
-        hold.push(this.props.accounts);
+
+        let selected = [];
+        let acct = this.props.accounts;
+
+        acct.forEach(act => {
+            if (act._id === this.thisAcct) { selected.push(act); }})
 
         return (
 
             <div className="container">
                 <h1> MONEYBANKS </h1>
-                <h2> Account </h2>
+                <h2> { selected[0].name } Account </h2>
                 <div className="form">
-                    <h3> { hold.name } Info </h3>
-                    <p> Current Balance: { hold.balance }</p>
+                    <h3> Account Info </h3>
+                    <p> Current Balance: ${ selected[0].balance }</p>
                     <div>
                         <button > Edit Account </button>
-                        <button type="button" onClick={() => {this.props.deleteAcct(2)}} className="accDelete"> Delete Account </button>
+                        <Link className={this.isActivePage("/")} to={"/"} onClick={(e) => this.onNavClick(e, "/")} id="delA"> Delete Account </Link>
                     </div>
                 </div>
-            <div className="transTble">
-                <h3> Transactions </h3>
-                <table className="transList">
-                    <tr>
-                        <th className="tbleID"> ID</th>
-                        <th className="tbleAccID"> Account ID</th>
-                        <th className="tbleType"> Type</th>
-                        <th className="tbleBalance"> Amount</th>
-                        <th className="tbleName"> Note</th>
-                    </tr>
-                    { transList }
-                </table>
-            </div>
+                <div className="transTble">
+                    <h3> Transactions </h3>
+                    <table className="transList">
+                        <tr>
+                            <th className="tbleID"> ID</th>
+                            <th className="tbleAccID"> Account ID</th>
+                            <th className="tbleType"> Type</th>
+                            <th className="tbleBalance"> Amount</th>
+                            <th className="tbleName"> Note</th>
+                        </tr>
+                        { transList }
+                    </table>
+                </div>
                 <div className="new-trans">
                     <h3 class='money'> New Transaction </h3>
                     <div className="Form-edit">

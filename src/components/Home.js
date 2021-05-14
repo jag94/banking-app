@@ -1,10 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 import { deleteAcct} from "../actions";
+import { Link } from "react-router-dom";
 
 class Home extends React.Component {
     state = {
-        currentPage: '/'
+        currentView: '/'
     } //might not deal with this
 
     isActivePage(pageName) {
@@ -12,8 +13,7 @@ class Home extends React.Component {
     }
 
     onNavClick(event, pageName) {
-        event.preventDefault();
-        this.props.onViewChange(pageName);
+        this.setState({ currentView: pageName})
     }
 
     accountsSeg () {
@@ -27,7 +27,7 @@ class Home extends React.Component {
                         <h4 className="cardName">Holder: { acct.name }</h4>
                         <h5 className="cardBalance">Balance: ${ acct.balance } </h5>
                         <div className="btnHolster">
-                            <button type="button" className={this.isActivePage('Account')} onClick={(e) => this.onNavClick(e, 'Account')}>  View Account </button>
+                            <Link className={this.isActivePage("Account/:id")} to={"Account/" + acct._id} onClick={(e) => this.onNavClick(e, "Account/:id")} id="viewA"> View Account </Link>
                             <button type="button" onClick={() => {this.props.deleteAcct(acct._id)}} className="accDelete"> Delete Account </button>
                         </div>
                     </div>
@@ -43,7 +43,7 @@ class Home extends React.Component {
                 <h1> MONEYBANKS </h1>
                 <h2> Accounts </h2>
                 <div className="accList">
-                        { accList }
+                    { accList }
                 </div>
             </div>
         );

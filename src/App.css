@@ -38,7 +38,7 @@ a:link, a:visited {
   cursor: pointer;
 }
 
-button {
+button, #delA, #viewA {
 
   background-color: #445a86;
   width: 30%;
@@ -86,18 +86,24 @@ h1, h2 {
   display: flex;
 }
 
-.btnHolster button {
+.btnHolster button, #viewA {
   margin: auto;
+  font-size: small;
+}
+
+#viewA:hover, #viewA:focus, #viewA:active {
+  color: mediumaquamarine;
+  cursor: pointer;
 }
 
 /* Transactions styling */
 
 .transList {
   background: ghostwhite;
-  margin: auto;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   width: 90%;
   text-align: center;
+  margin: auto auto 0.5%;
 }
 
 th, td {
@@ -113,7 +119,7 @@ th, td {
   flex-direction: column;
 }
 
-.Form-edit form input, .Form-edit form button {
+.Form-edit form input, .Form-edit form button, #delA {
   margin: 1% auto;
 }
 
@@ -139,8 +145,14 @@ th, td {
   color: ghostwhite;
 }
 
-.Form-edit form button, .form button {
+.Form-edit form button, .form button, #delA {
   background-color: cadetblue;
+  font-size: small;
+}
+
+#delA:hover, #delA:focus, #delA:active {
+  color: mediumaquamarine;
+  cursor: pointer;
 }
 
 /* Media queries for mobile view */
@@ -183,5 +195,9 @@ th, td {
 @media only screen and (max-width: 500px) {
   .transList {
     width: 99%;
+  }
+
+  .container {
+    font-size: small;
   }
 }
