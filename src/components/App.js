@@ -14,7 +14,7 @@ import Account from "./Account";
 
 class App extends React.Component {
     state = {
-        view: '/',
+        view: '/banking-app/',
         errorText: ''
     };
 
@@ -58,9 +58,9 @@ class App extends React.Component {
             <BrowserRouter>
                 <Pages />
                 <div>
-                    <Route path="/" exact component={ Home } />
-                    <Route path="/Transactions" component={ Transactions } />
-                    <Route path="/Account/:id" component={ Account } />
+                    <Route path="/banking-app/" exact component={ Home } />
+                    <Route path="/banking-app/Transactions/" component={ Transactions } />
+                    <Route path="/banking-app/Account/:id" component={ Account } />
                 </div>
             </BrowserRouter>
         )

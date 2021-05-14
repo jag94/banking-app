@@ -27,7 +27,7 @@ class Home extends React.Component {
                         <h4 className="cardName">Holder: { acct.name }</h4>
                         <h5 className="cardBalance">Balance: ${ acct.balance } </h5>
                         <div className="btnHolster">
-                            <Link className={this.isActivePage("Account/:id")} to={"Account/" + acct._id} onClick={(e) => this.onNavClick(e, "Account/:id")} id="viewA"> View Account </Link>
+                            <Link className={this.isActivePage("/banking-app/Account/:id")} to={"/banking-app/Account/" + acct._id} onClick={(e) => this.onNavClick(e, "/banking-app/Account/:id")} id="viewA"> View Account </Link>
                             <button type="button" onClick={() => {this.props.deleteAcct(acct._id)}} className="accDelete"> Delete Account </button>
                         </div>
                     </div>

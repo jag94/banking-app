@@ -74,7 +74,7 @@ class Account extends React.Component {
                     <p> Current Balance: ${ selected[0].balance }</p>
                     <div>
                         <button > Edit Account </button>
-                        <Link className={this.isActivePage("/")} to={"/"} onClick={(e) => this.onNavClick(e, "/")} id="delA"> Delete Account </Link>
+                        <Link className={this.isActivePage("/banking-app/")} to={"/banking-app/"} onClick={(e) => this.onNavClick(e, "/banking-app/")} id="delA"> Delete Account </Link>
                     </div>
                 </div>
                 <div className="transTble">

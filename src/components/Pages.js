@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 class Pages extends React.Component {
     state = {
-        currentView: '/'
+        currentView: '/banking-app/'
     }
 
     isActivePage(pageName) {
@@ -23,12 +23,12 @@ class Pages extends React.Component {
         return (
             <div className='nav pages'>
                 <div className='nav-item'>
-                    <Link className={this.isActivePage('/')} to="/" onClick={(e) => this.onNavClick(e, '/')}>
+                    <Link className={this.isActivePage('/banking-app/')} to="/banking-app/" onClick={(e) => this.onNavClick(e, '/banking-app/')}>
                         Home
                     </Link>
                 </div>
                 <div className='nav-item'>
-                    <Link className={this.isActivePage('/Transactions')} to="/Transactions" onClick={(e) => this.onNavClick(e, '/Transactions')}>
+                    <Link className={this.isActivePage('/banking-app/Transactions/')} to="/banking-app/Transactions/" onClick={(e) => this.onNavClick(e, '/banking-app/Transactions/')}>
                         Transactions
                     </Link>
                 </div>
